@@ -1,9 +1,9 @@
 package myproject.Gummi.api.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import myproject.Gummi.api.repository.ImageRepository;
-import myproject.Gummi.domain.dto.ImageSaveRequest;
 import myproject.Gummi.domain.entity.Image;
 import myproject.Gummi.global.exception.ConvertException;
 import myproject.Gummi.global.exception.ErrorCode;
@@ -20,7 +20,6 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -84,6 +83,7 @@ public class ImageService {
     }
 
     // 이미지 객체 생성&저장 메서드
+    @Transactional
     private Image save(String imgUrl, LocalDate shootingTime){
         Image image = Image.of(imgUrl, shootingTime);
         return imageRepository.save(image);
@@ -106,6 +106,7 @@ public class ImageService {
     }
 
     // 이미지 삭제
+    @Transactional
     public void deleteImage(Long imageId){
         // soft delete이기에 실제로 삭제 X
         Image findImage = imageRepository.findById(imageId).orElseThrow(()

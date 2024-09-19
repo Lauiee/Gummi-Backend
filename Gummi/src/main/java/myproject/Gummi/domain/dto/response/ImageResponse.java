@@ -1,4 +1,4 @@
-package myproject.Gummi.domain.dto;
+package myproject.Gummi.domain.dto.response;
 
 import lombok.Getter;
 import lombok.Setter;
