@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/weights")
 public class WeightController {
@@ -23,7 +25,12 @@ public class WeightController {
        return new ResponseEntity<>(newWeight, HttpStatus.CREATED);
     }
 
-
+    // 몸무게 전체 추이 조회
+    @GetMapping
+    public ResponseEntity<List<Weight>> getWeights(){
+        List<Weight> weightList= weightService.getWeights();
+        return new ResponseEntity<>(weightList, HttpStatus.OK);
+    }
 
     // 특정 몸무게 기록 삭제
     @DeleteMapping("/{weightId}")

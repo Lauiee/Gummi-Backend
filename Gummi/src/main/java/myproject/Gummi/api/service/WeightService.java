@@ -7,6 +7,8 @@ import myproject.Gummi.api.repository.WeightRepository;
 import myproject.Gummi.domain.entity.Weight;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class WeightService {
@@ -18,7 +20,9 @@ public class WeightService {
         return weightRepository.save(weight);
     }
 
-
+    public List<Weight> getWeights() {
+        return weightRepository.findAllActiveWeightsSortedByDate();
+    }
 
     @Transactional
     public void deleteWeight(Long weightId) {
@@ -27,4 +31,5 @@ public class WeightService {
         deletedWeight.setDeletedAt(true);
         weightRepository.save(deletedWeight);
     }
+
 }
