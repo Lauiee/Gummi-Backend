@@ -2,8 +2,8 @@ package myproject.Gummi.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import myproject.Gummi.api.service.ImageService;
-import myproject.Gummi.domain.dto.ImageDetailResponse;
-import myproject.Gummi.domain.dto.ImageResponse;
+import myproject.Gummi.domain.dto.response.ImageDetailResponse;
+import myproject.Gummi.domain.dto.response.ImageResponse;
 import myproject.Gummi.domain.entity.Image;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
