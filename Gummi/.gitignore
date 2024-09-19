@@ -35,3 +35,5 @@ out/
 
 ### VS Code ###
 .vscode/
+
+Gummi/src/main/resources/application-private.properties
