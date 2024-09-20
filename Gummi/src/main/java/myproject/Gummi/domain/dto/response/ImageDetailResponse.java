@@ -5,7 +5,6 @@ import lombok.Getter;
 import myproject.Gummi.domain.entity.Image;
 
 @Getter
-
 public class ImageDetailResponse {
 
     private String imageUrl;

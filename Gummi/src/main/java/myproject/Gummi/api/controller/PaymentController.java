@@ -3,6 +3,7 @@ package myproject.Gummi.api.controller;
 import lombok.RequiredArgsConstructor;
 import myproject.Gummi.api.service.PaymentService;
 import myproject.Gummi.domain.dto.request.PaymentSaveRequest;
+import myproject.Gummi.domain.dto.response.PaymentDetailResponse;
 import myproject.Gummi.domain.dto.response.PaymentResponse;
 import myproject.Gummi.domain.entity.Payment;
 import myproject.Gummi.domain.mapper.PaymentMapper;
@@ -31,12 +32,22 @@ public class PaymentController {
         // 파라미터가 없으면 전체 조회
         List<PaymentResponse> responses = PaymentMapper.toResponseList(paymentService.getPayments(isSettled));
         return new ResponseEntity<>(responses,HttpStatus.OK);
-
     }
 
     // 지출 금액 상세 조회
+    @GetMapping("/{paymentId}")
+    public ResponseEntity<PaymentDetailResponse> getPayment(@PathVariable("paymentId") long paymentId){
+        PaymentDetailResponse response = PaymentDetailResponse.of(paymentService.getPayment(paymentId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
     // 정산 여부 변경
+    @PatchMapping("/{paymentId}/settled/{isSettled}")
+    public ResponseEntity<Payment> updatePaymentSettled(
+            @PathVariable("paymentId") long paymentId,
+            @PathVariable("isSettled") boolean isSettled) {
+        return new ResponseEntity<>(paymentService.updateSettled(paymentId,isSettled),HttpStatus.OK);
+    }
 
     // 지출 금액 삭제
     @DeleteMapping("/{paymentId}")
