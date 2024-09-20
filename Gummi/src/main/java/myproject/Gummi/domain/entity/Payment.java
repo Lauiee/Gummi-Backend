@@ -24,7 +24,7 @@ public class Payment {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private Category category;
+    private PaymentCategory paymentCategory;
 
     public Payment() {
     }

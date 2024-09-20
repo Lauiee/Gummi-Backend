@@ -1,6 +1,9 @@
 package myproject.Gummi.domain.entity;
 
-public enum Category {
+import lombok.Getter;
+
+@Getter
+public enum PaymentCategory {
 
     HOSPITAL("병원"),
     BEAUTY("미용"),
@@ -11,7 +14,6 @@ public enum Category {
 
     private String title;
 
-    Category(String title){this.title = title;}
+    PaymentCategory(String title){this.title = title;}
 
-    public String getTitle() {return title;}
 }
