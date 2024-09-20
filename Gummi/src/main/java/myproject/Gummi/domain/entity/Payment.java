@@ -1,9 +1,6 @@
 package myproject.Gummi.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,12 +16,15 @@ public class Payment {
     private long id;
 
     private long price;
-    private Category category;
     private String reason;
     private LocalDate payDate;
     private boolean isSettled;
     private LocalDate createdAt;
     private boolean isDeleted;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
     public Payment() {
     }
