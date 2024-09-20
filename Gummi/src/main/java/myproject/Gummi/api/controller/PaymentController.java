@@ -6,10 +6,7 @@ import myproject.Gummi.domain.dto.request.PaymentSaveRequest;
 import myproject.Gummi.domain.entity.Payment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,4 +25,9 @@ public class PaymentController {
     // 지출 금액 상세 조회
     // 정산 여부 변경
     // 지출 금액 삭제
+    @DeleteMapping("/{paymentId}")
+    public ResponseEntity<String> deletePayment(@PathVariable("paymentId") long paymentId){
+        paymentService.delete(paymentId);
+        return ResponseEntity.ok("지출 내역 삭제에 성공하였습니다.");
+    }
 }
