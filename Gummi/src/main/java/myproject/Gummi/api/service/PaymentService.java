@@ -7,6 +7,8 @@ import myproject.Gummi.api.repository.PaymentRepository;
 import myproject.Gummi.domain.entity.Payment;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PaymentService {
@@ -24,5 +26,9 @@ public class PaymentService {
                 -> new EntityNotFoundException("payment not found with id: " + paymentId));
          payment.setDeleted(true);
          paymentRepository.save(payment);
+    }
+
+    public List<Payment> getPayments(Boolean isSettled) {
+        return paymentRepository.findByIsSettled(isSettled);
     }
 }
