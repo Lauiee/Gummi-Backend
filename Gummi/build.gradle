@@ -29,6 +29,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 	implementation 'com.drewnoakes:metadata-extractor:2.17.0'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+
 	implementation 'org.im4java:im4java:1.4.0'
 
 	runtimeOnly 'com.mysql:mysql-connector-j'
