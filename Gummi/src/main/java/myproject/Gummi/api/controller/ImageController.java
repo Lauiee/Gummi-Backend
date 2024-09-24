@@ -6,6 +6,7 @@ import myproject.Gummi.domain.dto.response.ImageDetailResponse;
 import myproject.Gummi.domain.dto.response.ImageResponse;
 import myproject.Gummi.domain.entity.Image;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +22,7 @@ public class ImageController {
     private final ImageService imageService;
 
     // 사진 등록
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Image> saveImage(@RequestPart("image") MultipartFile image){
         Image newImg = imageService.upload(image);
         return new ResponseEntity<>(newImg, HttpStatus.OK);
